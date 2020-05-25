@@ -3,12 +3,6 @@
 
 source 'https://github.com/CocoaPods/Specs.git'
 
-pod 'Firebase/Crashlytics'
-pod 'Firebase/Functions'
-pod 'Firebase/Storage'
-pod 'Firebase/Auth'
-pod 'Firebase/RemoteConfig'
-pod 'FirebaseUI/Phone', '~> 8.0'
 pod 'lottie-ios'
 pod 'SwiftLint'
 pod 'IBMMobileFirstPlatformFoundation'

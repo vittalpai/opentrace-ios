@@ -1,5 +1,4 @@
 import Foundation
-import FirebaseFunctions
 
 //struct FirebaseAPIs {
 //    static var functions = Functions.functions(region: PlistHelper.getvalueFromInfoPlist(withKey: "CLOUDFUNCTIONS_REGION") ?? "asia-east2")
