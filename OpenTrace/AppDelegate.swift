@@ -1,8 +1,5 @@
 import UIKit
 import CoreData
-import Firebase
-import FirebaseAuth
-import FirebaseRemoteConfig
 import CoreMotion
 
 @UIApplicationMain
@@ -13,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         // Override point for customization after application launch.
-        FirebaseApp.configure()
+      //  FirebaseApp.configure()
 
         //configure the database manager
         self.configureDatabaseManager()
@@ -39,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if !OnboardingManager.shared.completedIWantToHelp {
             do {
-                try Auth.auth().signOut()
+           //     try Auth.auth().signOut()
             } catch {
                 Logger.DLog("Unable to signout")
             }

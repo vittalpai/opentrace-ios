@@ -4,8 +4,6 @@
 
 import Foundation
 import UIKit
-import Firebase
-import FirebaseFunctions
 import CoreData
 
 class UploadDataStep2VC: UIViewController {
@@ -17,8 +15,8 @@ class UploadDataStep2VC: UIViewController {
     let uploadFailErrMsg = "Upload failed. Please try again later."
     let invalidPinErrMsg = "Invalid PIN"
 
-    var functions = Functions.functions(region: PlistHelper.getvalueFromInfoPlist(withKey: "CLOUDFUNCTIONS_REGION") ?? "asia-east2")
-    let storageUrl = PlistHelper.getvalueFromInfoPlist(withKey: "FIREBASE_STORAGE_URL") ?? ""
+   // var functions = Functions.functions(region: PlistHelper.getvalueFromInfoPlist(withKey: "CLOUDFUNCTIONS_REGION") ?? "asia-east2")
+   // let storageUrl = PlistHelper.getvalueFromInfoPlist(withKey: "FIREBASE_STORAGE_URL") ?? ""
 
     override func viewDidLoad() {
         disclaimerTextLbl.semiBold(text: "We don’t collect any geolocation or personal data.")
@@ -36,41 +34,42 @@ class UploadDataStep2VC: UIViewController {
         activityIndicator.startAnimating()
         let code = codeInputView.text
 
-        functions.httpsCallable("getUploadToken").call(code) { [unowned self] (result, error) in
-            if let error = error as NSError? {
-                sender.isEnabled = true
-                self.activityIndicator.stopAnimating()
-                self.uploadErrorMsgLbl.text = self.uploadFailErrMsg
-
-                if error.domain == FunctionsErrorDomain {
-                    let code = FunctionsErrorCode(rawValue: error.code)
-                    let message = error.localizedDescription
-                    let details = error.userInfo[FunctionsErrorDetailsKey]
-
-                    Logger.DLog("Cloud Function Error - [\(String(describing: code))][\(message)][\(String(describing: details))]")
-                }
-
-                Logger.DLog("Error - \(error)")
-            }
-
-            if let token = (result?.data as? [String: Any])?["token"] as? String {
-                self.uploadFile(token: token) { success in
-                    if success {
-                        self.performSegue(withIdentifier: "showSuccessVCSegue", sender: nil)
-                    } else {
-                        self.uploadErrorMsgLbl.isHidden = false
-                        self.uploadErrorMsgLbl.text = self.uploadFailErrMsg
-                        sender.isEnabled = true
-                        self.activityIndicator.stopAnimating()
-                    }
-                }
-            } else {
-                self.uploadErrorMsgLbl.isHidden = false
-                self.uploadErrorMsgLbl.text = self.invalidPinErrMsg
-                sender.isEnabled = true
-                self.activityIndicator.stopAnimating()
-            }
-        }
+//        FIXME : VITTAL
+//        functions.httpsCallable("getUploadToken").call(code) { [unowned self] (result, error) in
+//            if let error = error as NSError? {
+//                sender.isEnabled = true
+//                self.activityIndicator.stopAnimating()
+//                self.uploadErrorMsgLbl.text = self.uploadFailErrMsg
+//
+//                if error.domain == FunctionsErrorDomain {
+//                    let code = FunctionsErrorCode(rawValue: error.code)
+//                    let message = error.localizedDescription
+//                    let details = error.userInfo[FunctionsErrorDetailsKey]
+//
+//                    Logger.DLog("Cloud Function Error - [\(String(describing: code))][\(message)][\(String(describing: details))]")
+//                }
+//
+//                Logger.DLog("Error - \(error)")
+//            }
+//
+//            if let token = (result?.data as? [String: Any])?["token"] as? String {
+//                self.uploadFile(token: token) { success in
+//                    if success {
+//                        self.performSegue(withIdentifier: "showSuccessVCSegue", sender: nil)
+//                    } else {
+//                        self.uploadErrorMsgLbl.isHidden = false
+//                        self.uploadErrorMsgLbl.text = self.uploadFailErrMsg
+//                        sender.isEnabled = true
+//                        self.activityIndicator.stopAnimating()
+//                    }
+//                }
+//            } else {
+//                self.uploadErrorMsgLbl.isHidden = false
+//                self.uploadErrorMsgLbl.text = self.invalidPinErrMsg
+//                sender.isEnabled = true
+//                self.activityIndicator.stopAnimating()
+//            }
+//        }
     }
 
     func uploadFile(token: String, _ result: @escaping (Bool) -> Void) {
@@ -130,27 +129,27 @@ class UploadDataStep2VC: UIViewController {
                 result(false)
                 return
             }
-
-            let fileRef = Storage.storage(url: self.storageUrl).reference().child("streetPassRecords/\(file)")
-
-            _ = fileRef.putFile(from: fileURL, metadata: nil) { metadata, error in
-                guard let metadata = metadata else {
-                    Logger.DLog("Error uploading file - \(String(describing: error))")
-                    result(false)
-                    return
-                }
-
-                let size = metadata.size
-
-                do {
-                    try FileManager.default.removeItem(at: fileURL)
-                } catch {
-                    Logger.DLog("Error deleting uploaded file on local device")
-                }
-
-                Logger.DLog("File uploaded [\(size)]")
-                result(true)
-            }
+//        FIXME : VITTAL
+//            let fileRef = Storage.storage(url: self.storageUrl).reference().child("streetPassRecords/\(file)")
+//
+//            _ = fileRef.putFile(from: fileURL, metadata: nil) { metadata, error in
+//                guard let metadata = metadata else {
+//                    Logger.DLog("Error uploading file - \(String(describing: error))")
+//                    result(false)
+//                    return
+//                }
+//
+//                let size = metadata.size
+//
+//                do {
+//                    try FileManager.default.removeItem(at: fileURL)
+//                } catch {
+//                    Logger.DLog("Error deleting uploaded file on local device")
+//                }
+//
+//                Logger.DLog("File uploaded [\(size)]")
+//                result(true)
+//            }
         }
     }
 }

@@ -1,5 +1,4 @@
 import UIKit
-import FirebaseRemoteConfig
 import Lottie
 import CoreData
 
@@ -26,7 +25,7 @@ class HomeViewController: UIViewController {
     var bleAuthorized = true
     var blePoweredOn = true
     var pushNotificationGranted = true
-    var remoteConfig = RemoteConfig.remoteConfig()
+ //   var remoteConfig = RemoteConfig.remoteConfig()
 
     var _preferredScreenEdgesDeferringSystemGestures: UIRectEdge = []
 
@@ -110,7 +109,8 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func onShareTapped(_ sender: UITapGestureRecognizer) {
-        let shareText = TracerRemoteConfig.instance.configValue(forKey: "ShareText").stringValue ?? TracerRemoteConfig.defaultShareText
+    //    let shareText = TracerRemoteConfig.instance.configValue(forKey: "ShareText").stringValue ?? TracerRemoteConfig.defaultShareText
+        let shareText = "Join me in stopping the spread of COVID-19! Download OpenTrace!"
         let activity = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
         activity.popoverPresentationController?.sourceView = shareView
 
@@ -185,29 +185,29 @@ class HomeViewController: UIViewController {
 }
 
 struct TracerRemoteConfig {
-    static private(set) var instance: RemoteConfig!
+ //   static private(set) var instance: RemoteConfig!
     static let defaultShareText = "Join me in stopping the spread of COVID-19! Download OpenTrace!"
 
     init() {
         // Setup remote config
-        TracerRemoteConfig.instance = RemoteConfig.remoteConfig()
-        let settings = RemoteConfigSettings()
-        settings.minimumFetchInterval = 3600
-        TracerRemoteConfig.instance.configSettings = settings
-
-        let defaultValue = ["ShareText": TracerRemoteConfig.defaultShareText as NSObject]
-        TracerRemoteConfig.instance.setDefaults(defaultValue)
-        TracerRemoteConfig.instance.fetch(withExpirationDuration: TimeInterval(3600)) { (status, error) -> Void in
-            if status == .success {
-                Logger.DLog("Remote config fetch success")
-                TracerRemoteConfig.instance.activate { (error) in
-                    Logger.DLog("Remote config activate\(error == nil ? "" : " with error \(error!)")")
-                }
-            } else {
-                Logger.DLog("Config not fetched")
-                Logger.DLog("Error: \(error?.localizedDescription ?? "No error available.")")
-            }
-        }
+//        TracerRemoteConfig.instance = RemoteConfig.remoteConfig()
+//        let settings = RemoteConfigSettings()
+//        settings.minimumFetchInterval = 3600
+//        TracerRemoteConfig.instance.configSettings = settings
+//
+//        let defaultValue = ["ShareText": TracerRemoteConfig.defaultShareText as NSObject]
+//        TracerRemoteConfig.instance.setDefaults(defaultValue)
+//        TracerRemoteConfig.instance.fetch(withExpirationDuration: TimeInterval(3600)) { (status, error) -> Void in
+//            if status == .success {
+//                Logger.DLog("Remote config fetch success")
+//                TracerRemoteConfig.instance.activate { (error) in
+//                    Logger.DLog("Remote config activate\(error == nil ? "" : " with error \(error!)")")
+//                }
+//            } else {
+//                Logger.DLog("Config not fetched")
+//                Logger.DLog("Error: \(error?.localizedDescription ?? "No error available.")")
+//            }
+//        }
     }
 }
 

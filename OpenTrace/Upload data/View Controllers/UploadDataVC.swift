@@ -4,8 +4,6 @@
 
 import UIKit
 import CoreData
-import Firebase
-import FirebaseFunctions
 
 class UploadDataViewController: UIViewController {
 

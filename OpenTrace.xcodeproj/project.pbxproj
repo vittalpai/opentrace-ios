@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C339E622476345300272CF9 /* SMSOTPChallengeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C339E612476345300272CF9 /* SMSOTPChallengeHandler.swift */; };
+		0C5B788F247A5313001E5348 /* mfpclient.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C5B788E247A5313001E5348 /* mfpclient.plist */; };
 		30BE1CAA23F108BA005DCE4F /* UploadFileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE1CA923F108BA005DCE4F /* UploadFileData.swift */; };
 		30BE1CAD23F119FD005DCE4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30BE1CAC23F119FD005DCE4F /* Localizable.strings */; };
 		30BE1CAF23F1349F005DCE4F /* EncounterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE1CAE23F1349F005DCE4F /* EncounterRecord.swift */; };
@@ -78,6 +80,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C339E612476345300272CF9 /* SMSOTPChallengeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSOTPChallengeHandler.swift; sourceTree = "<group>"; };
+		0C5B788E247A5313001E5348 /* mfpclient.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mfpclient.plist; sourceTree = "<group>"; };
 		30BE1CA923F108BA005DCE4F /* UploadFileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileData.swift; sourceTree = "<group>"; };
 		30BE1CAC23F119FD005DCE4F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		30BE1CAE23F1349F005DCE4F /* EncounterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterRecord.swift; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 			children = (
 				5D7DC314243E121E007180E9 /* View Controllers */,
 				553AA5CD243EC91700EE326F /* OnboardingManager.swift */,
+				0C339E612476345300272CF9 /* SMSOTPChallengeHandler.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 		5DD41D2E23DCB03B00FD4AB0 = {
 			isa = PBXGroup;
 			children = (
+				0C5B788E247A5313001E5348 /* mfpclient.plist */,
 				5DD41D3923DCB03B00FD4AB0 /* OpenTrace */,
 				5DD41D3823DCB03B00FD4AB0 /* Products */,
 				C1FDFBCD3FA29CDE38625AB0 /* Pods */,
@@ -543,6 +549,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C5B788F247A5313001E5348 /* mfpclient.plist in Resources */,
 				B6932CE724260E2B003D1810 /* UploadData.storyboard in Resources */,
 				30BE1CAD23F119FD005DCE4F /* Localizable.strings in Resources */,
 				5D7DC33F243E5789007180E9 /* Muli-Light.ttf in Resources */,
@@ -720,6 +727,7 @@
 				D8D3100B243C7ECD00D760B0 /* BluetraceV2.swift in Sources */,
 				5DD41D5323DD4CA400FD4AB0 /* PeripheralController.swift in Sources */,
 				C5D209FC23F4476F007233BE /* UITextViewFixed.swift in Sources */,
+				0C339E622476345300272CF9 /* SMSOTPChallengeHandler.swift in Sources */,
 				C585C83B23EEB99B0061B7C6 /* GradientButton.swift in Sources */,
 				5D5F83AD23F023F600770DEF /* EncounterMessageManager.swift in Sources */,
 				5DD41D4F23DCB05600FD4AB0 /* CentralController.swift in Sources */,
@@ -883,9 +891,9 @@
 				CLOUDFUNCTIONS_REGION = "asia-east2";
 				CODE_SIGN_ENTITLEMENTS = "OpenTrace/Project Bluetrace.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 27;
-				DEVELOPMENT_TEAM = 4CYF853X55;
+				DEVELOPMENT_TEAM = "";
 				FIREBASE_STORAGE_URL = "<insert firebase storage url here>";
 				INFOPLIST_FILE = "$(SRCROOT)/OpenTrace/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -893,10 +901,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OT_DISPLAY_NAME = "STG OpenTrace";
-				PRODUCT_BUNDLE_IDENTIFIER = "sg.gov.tech.opentrace-stg";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mfp.sdk;
 				PRODUCT_NAME = OpenTrace;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SERVICE_UUID = "A6BA4286-C550-4794-A888-9467EF0B31A8";
@@ -914,9 +922,9 @@
 				CLOUDFUNCTIONS_REGION = "asia-east2";
 				CODE_SIGN_ENTITLEMENTS = "OpenTrace/Project Bluetrace.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 27;
-				DEVELOPMENT_TEAM = 4CYF853X55;
+				DEVELOPMENT_TEAM = "";
 				FIREBASE_STORAGE_URL = "<insert firebase storage url here>";
 				INFOPLIST_FILE = "$(SRCROOT)/OpenTrace/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -924,9 +932,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.0;
 				OT_DISPLAY_NAME = OpenTrace;
-				PRODUCT_BUNDLE_IDENTIFIER = sg.gov.tech.opentrace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mfp.sdk;
 				PRODUCT_NAME = OpenTrace;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SERVICE_UUID = "A6BA4286-C550-4794-A888-9467EF0B31A8";

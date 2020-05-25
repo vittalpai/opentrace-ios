@@ -11,6 +11,7 @@ pod 'Firebase/RemoteConfig'
 pod 'FirebaseUI/Phone', '~> 8.0'
 pod 'lottie-ios'
 pod 'SwiftLint'
+pod 'IBMMobileFirstPlatformFoundation'
 
 # https://firebase.google.com/docs/ios/setup#available-pods
 

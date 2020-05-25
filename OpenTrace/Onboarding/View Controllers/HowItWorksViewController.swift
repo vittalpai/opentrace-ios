@@ -3,7 +3,6 @@
 //  OpenTrace
 
 import UIKit
-import FirebaseAuth
 
 class HowItWorksViewController: UIViewController {
 
@@ -11,11 +10,13 @@ class HowItWorksViewController: UIViewController {
 
         OnboardingManager.shared.completedIWantToHelp = true
 
-        if Auth.auth().currentUser == nil {
-            self.performSegue(withIdentifier: "iWantToHelpToPhoneSegue", sender: self)
-        } else {
-            self.performSegue(withIdentifier: "iWantToHelpToConsentSegue", sender: self)
-        }
+//        FIXME: VITTAL
+//        if Auth.auth().currentUser == nil {
+//            self.performSegue(withIdentifier: "iWantToHelpToPhoneSegue", sender: self)
+//        } else {
+//            self.performSegue(withIdentifier: "iWantToHelpToConsentSegue", sender: self)
+//        }
+          self.performSegue(withIdentifier: "iWantToHelpToConsentSegue", sender: self)
     }
 
     override func viewDidLoad() {

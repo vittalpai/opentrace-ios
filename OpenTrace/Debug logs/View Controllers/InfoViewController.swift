@@ -1,6 +1,6 @@
 import UIKit
 import CoreData
-import FirebaseAuth
+//import FirebaseAuth
 
 final class InfoViewController: UIViewController {
     @IBOutlet weak var devicesEncounteredLabel: UILabel!
@@ -27,7 +27,7 @@ final class InfoViewController: UIViewController {
 
     @IBAction func logoutBtn(_ sender: UIButton) {
         do {
-            try Auth.auth().signOut()
+         //   try Auth.auth().signOut()
             let navController = self.navigationController!
             let storyboard = navController.storyboard!
             let introVC = storyboard.instantiateViewController(withIdentifier: "intro")

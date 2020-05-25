@@ -3,7 +3,6 @@
 //  OpenTrace
 
 import UIKit
-import FirebaseAuth
 
 class IntroViewController: UIViewController {
     override func viewDidLoad() {

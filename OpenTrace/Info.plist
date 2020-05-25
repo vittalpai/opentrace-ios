@@ -69,12 +69,15 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>27</string>
-	<key>FIREBASE_STORAGE_URL</key>
-	<string>$(FIREBASE_STORAGE_URL)</string>
 	<key>GitBranchInfo</key>
 	<string>clean_app_delegate - Commit: 90b3a10</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>OpenTrace exchanges Bluetooth signals with nearby phones running the same app. These signals contain an anonymised ID, which is encrypted and changes continually to ensure your privacy.</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
@@ -126,7 +129,5 @@
 	<string>Light</string>
 	<key>V2_CHARACTERISTIC_ID</key>
 	<string>$(V2_CHARACTERISTIC_ID)</string>
-	<key>CLOUDFUNCTIONS_REGION</key>
-	<string>$(CLOUDFUNCTIONS_REGION)</string>
 </dict>
 </plist>

@@ -1,5 +1,4 @@
 import Foundation
-import FirebaseFunctions
 
 class EncounterMessageManager {
     let userDefaultsTempIdKey = "BROADCAST_MSG"
@@ -9,7 +8,7 @@ class EncounterMessageManager {
 
     static let shared = EncounterMessageManager()
 
-    lazy var functions = Functions.functions(region: PlistHelper.getvalueFromInfoPlist(withKey: "CLOUDFUNCTIONS_REGION") ?? "asia-east2")
+ //   lazy var functions = Functions.functions(region: PlistHelper.getvalueFromInfoPlist(withKey: "CLOUDFUNCTIONS_REGION") ?? "asia-east2")
 
     var tempId: String? {
         guard var tempIds = UserDefaults.standard.array(forKey: userDefaultsTempIdArrayKey) as! [[String: Any]]? else {
@@ -94,68 +93,70 @@ class EncounterMessageManager {
 
     func fetchTempIdFromFirebase(onComplete: ((Error?, (String, Date)?) -> Void)?) {
         Logger.DLog("Fetching tempId from firebase")
-        functions.httpsCallable("getBroadcastMessage").call { (result, error) in
-            // Handle error
-            guard error == nil else {
-                if let error = error as NSError? {
-                    if error.domain == FunctionsErrorDomain {
-                        let code = FunctionsErrorCode(rawValue: error.code)
-                        let message = error.localizedDescription
-                        let details = error.userInfo[FunctionsErrorDetailsKey]
-                        Logger.DLog("Cloud function error. Code: \(String(describing: code)), Message: \(message), Details: \(String(describing: details))")
-                        onComplete?(error, nil)
-                        return
-                    }
-                } else {
-                    Logger.DLog("Cloud function error, unable to convert error to NSError.\(error!)")
-                }
-                onComplete?(error, nil)
-                return
-            }
+//        FIXME : VITTAL
+//        functions.httpsCallable("getBroadcastMessage").call { (result, error) in
+//            // Handle error
+//            guard error == nil else {
+//                if let error = error as NSError? {
+//                    if error.domain == FunctionsErrorDomain {
+//                        let code = FunctionsErrorCode(rawValue: error.code)
+//                        let message = error.localizedDescription
+//                        let details = error.userInfo[FunctionsErrorDetailsKey]
+//                        Logger.DLog("Cloud function error. Code: \(String(describing: code)), Message: \(message), Details: \(String(describing: details))")
+//                        onComplete?(error, nil)
+//                        return
+//                    }
+//                } else {
+//                    Logger.DLog("Cloud function error, unable to convert error to NSError.\(error!)")
+//                }
+//                onComplete?(error, nil)
+//                return
+//            }
 
             // Handle getting a valid tempId from Firebase function
-            guard let tempIdBase64 = (result?.data as? [String: Any])?["bm"] as? String,
-                let bmRefreshTime = (result?.data as? [String: Any])?["refreshTime"] as? Double else {
-                    Logger.DLog("Unable to get tempId or refreshTime from Firebase. result of function call: \(String(describing: result))")
-                    onComplete?(NSError(domain: "BM", code: 9999, userInfo: nil), nil)
-                    return
-            }
+//            guard let tempIdBase64 = (result?.data as? [String: Any])?["bm"] as? String,
+//                let bmRefreshTime = (result?.data as? [String: Any])?["refreshTime"] as? Double else {
+//                    Logger.DLog("Unable to get tempId or refreshTime from Firebase. result of function call: \(String(describing: result))")
+//                    onComplete?(NSError(domain: "BM", code: 9999, userInfo: nil), nil)
+//                    return
+//            }
 
-            onComplete?(nil, (tempIdBase64, Date(timeIntervalSince1970: bmRefreshTime)))
-        }
+//            onComplete?(nil, (tempIdBase64, Date(timeIntervalSince1970: bmRefreshTime)))
+//        }
     }
 
     func fetchBatchTempIdsFromFirebase(onComplete: ((Error?, ([[String: Any]], Date)?) -> Void)?) {
         Logger.DLog("Fetching Batch of tempIds from firebase")
-        functions.httpsCallable("getTempIDs").call { (result, error) in
-            // Handle error
-            guard error == nil else {
-                if let error = error as NSError? {
-                    if error.domain == FunctionsErrorDomain {
-                        let code = FunctionsErrorCode(rawValue: error.code)
-                        let message = error.localizedDescription
-                        let details = error.userInfo[FunctionsErrorDetailsKey]
-                        Logger.DLog("Cloud function error. Code: \(String(describing: code)), Message: \(message), Details: \(String(describing: details))")
-                        onComplete?(error, nil)
-                        return
-                    }
-                } else {
-                    Logger.DLog("Cloud function error, unable to convert error to NSError.\(error!)")
-                }
-                onComplete?(error, nil)
-                return
-            }
-
-            // Handle getting a batch of tempIds from Firebase function
-            guard let tempIdsInBase64 = (result?.data as? [String: Any])?["tempIDs"] as? [[String: Any]],
-                let bmRefreshTime = (result?.data as? [String: Any])?["refreshTime"] as? Double else {
-                    Logger.DLog("Unable to get tempId or refreshTime from Firebase. result of function call: \(String(describing: result))")
-                    onComplete?(NSError(domain: "BM", code: 9999, userInfo: nil), nil)
-                    return
-            }
-
-            onComplete?(nil, (tempIdsInBase64, Date(timeIntervalSince1970: bmRefreshTime)))
-        }
+//         FIXME : VITTAL
+//        functions.httpsCallable("getTempIDs").call { (result, error) in
+//            // Handle error
+//            guard error == nil else {
+//                if let error = error as NSError? {
+//                    if error.domain == FunctionsErrorDomain {
+//                        let code = FunctionsErrorCode(rawValue: error.code)
+//                        let message = error.localizedDescription
+//                        let details = error.userInfo[FunctionsErrorDetailsKey]
+//                        Logger.DLog("Cloud function error. Code: \(String(describing: code)), Message: \(message), Details: \(String(describing: details))")
+//                        onComplete?(error, nil)
+//                        return
+//                    }
+//                } else {
+//                    Logger.DLog("Cloud function error, unable to convert error to NSError.\(error!)")
+//                }
+//                onComplete?(error, nil)
+//                return
+//            }
+//
+//            // Handle getting a batch of tempIds from Firebase function
+//            guard let tempIdsInBase64 = (result?.data as? [String: Any])?["tempIDs"] as? [[String: Any]],
+//                let bmRefreshTime = (result?.data as? [String: Any])?["refreshTime"] as? Double else {
+//                    Logger.DLog("Unable to get tempId or refreshTime from Firebase. result of function call: \(String(describing: result))")
+//                    onComplete?(NSError(domain: "BM", code: 9999, userInfo: nil), nil)
+//                    return
+//            }
+//
+//            onComplete?(nil, (tempIdsInBase64, Date(timeIntervalSince1970: bmRefreshTime)))
+//        }
     }
 
     func setAdvtPayloadIntoUserDefaultsv2(_ response: (tempIds: [[String: Any]], refreshDate: Date)) -> Data? {

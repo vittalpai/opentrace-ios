@@ -29,16 +29,17 @@ class UploadDataStep1VC: UIViewController {
         nextBtn.isEnabled = false
         retryBtn.isHidden = true
         activityIndicator.startAnimating()
-        FirebaseAPIs.getHandshakePin { (pin) in
-            if let pin = pin {
-                self.verificationCode.text = pin
-                UserDefaults.standard.set(pin, forKey: OTPViewController.userDefaultsPinKey)
-                self.nextBtn.isEnabled = true
-            } else {
-                self.verificationCode.text = "ERROR"
-                self.retryBtn.isHidden = false
-            }
-            self.activityIndicator.stopAnimating()
-        }
+//      FIX ME : VITTAL
+//        FirebaseAPIs.getHandshakePin { (pin) in
+//            if let pin = pin {
+//                self.verificationCode.text = pin
+//                UserDefaults.standard.set(pin, forKey: OTPViewController.userDefaultsPinKey)
+//                self.nextBtn.isEnabled = true
+//            } else {
+//                self.verificationCode.text = "ERROR"
+//                self.retryBtn.isHidden = false
+//            }
+//            self.activityIndicator.stopAnimating()
+//        }
     }
 }
